@@ -4,13 +4,14 @@
         <div class="m20">
         <el-row>
             <el-col :span="12" v-for="(item, index) in list" :key="'1'">
-                <router-link :to="'detail/'+item.ID">
+                <router-link :to="'detail?Id='+item.ID">
+
                 <el-card :body-style="{ padding: '1px' }" class="homeCard">
                     <img :src="item.Pic" class="image">
                     <div style="padding: 14px;">
                         <el-row>标题：{{item.Title}}</el-row>
                         <el-row>券后价：{{item.Price}}</el-row>
-                        <el-row>描述：{{item.Introduce}}</el-row>
+                        <el-row class="miaoshu">描述：{{item.Introduce}}</el-row>
                         <div class="bottom clearfix">
                             <time class="time">{{ currentDate }}</time>
                         </div>
@@ -83,6 +84,10 @@
         display: block;
     }
     .homeCard{
-        width: 84%;margin-left: 8%;margin-bottom: 20px
+        width: 90%;margin-left: 5%;margin-bottom: 20px
+    }
+    .miaoshu{
+        height: 80px;
+        overflow: hidden;
     }
 </style>

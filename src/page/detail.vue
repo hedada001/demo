@@ -1,26 +1,8 @@
 <template lang="html">
     <div>
-        <v-header :url="url"></v-header>
-        <div class="m20">
-            <el-row>
-                <el-col :span="12" v-for="(item, index) in list" :key="'1'">
-                    <router-link :to="'detail/'+item.ID">
-                        <el-card :body-style="{ padding: '1px' }" class="homeCard">
-                            <img :src="item.Pic" class="image">
-                            <div style="padding: 14px;">
-                                <el-row>标题：{{item.Title}}</el-row>
-                                <el-row>券后价：{{item.Price}}</el-row>
-                                <el-row>描述：{{item.Introduce}}</el-row>
-                                <div class="bottom clearfix">
-                                    <time class="time">{{ currentDate }}</time>
-                                </div>
-                            </div>
-                        </el-card>
-                    </router-link>
-                </el-col>
-            </el-row>
+        <div>
+           {{detail}}
         </div>
-        <v-footer :url="url"></v-footer>
     </div>
 </template>
 
@@ -28,20 +10,19 @@
   import axios from 'axios'
   export default {
     beforeRouteEnter (to, from, next) {
-      function getList () {
+      function getDetail () {
         return axios.get('api/index.php', {
           params: {
-            r: 'Port/index',
+            r: 'port/index',
             appkey: 'kavfg0c3q2',
             v: '2',
-            id: '1233'
+            id: to.query.Id
           }
         })
       }
-      axios.all([getList()])
-        .then(axios.spread((List) => {
-          console.log(List)
-          to.params.List = List.data.result;
+      axios.all([getDetail()])
+        .then(axios.spread((getDetail) => {
+          to.params.detail = getDetail.data.result
           next()
         }))
         .catch(err => {
@@ -50,31 +31,12 @@
     },
     data () {
       return {
-        currentDate: new Date(),
-        list: this.$route.params.List
+        detail: this.$route.params.detail
       }
     }
   }
 </script>
 
 <style>
-    .time {
-        font-size: 13px;
-        color: #999;
-    }
-    .m20 {
-        margin: 114px 0 100px 0;
-    }
-    .bottom {
-        margin-top: 13px;
-        line-height: 12px;
-    }
 
-    .image {
-        width: 100%;
-        display: block;
-    }
-    .homeCard{
-        width: 84%;margin-left: 8%;margin-bottom: 20px
-    }
 </style>
