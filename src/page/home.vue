@@ -10,7 +10,7 @@
                     <img :src="item.Pic" class="image">
                     <div style="padding: 14px;">
                         <el-row>标题：{{item.Title}}</el-row>
-                        <el-row>券后价：{{item.Price}}</el-row>
+                        <el-row>券后价：<span style="color: red">¥ </span> {{item.Price}}</el-row>
                         <el-row class="miaoshu">描述：{{item.Introduce}}</el-row>
                         <div class="bottom clearfix">
                             <time class="time">{{ currentDate }}</time>
@@ -29,6 +29,7 @@
   import vFooter from '../component/footer.vue'
   import vHeader from '../component/header.vue'
   import axios from 'axios'
+  import $ from 'jquery'
   export default {
     beforeRouteEnter (to, from, next) {
       function getList () {
@@ -38,7 +39,7 @@
             r: 'Port/index',
             type: 'paoliang',
             appkey: 'kavfg0c3q2',
-            v: '2',
+            v: '2'
           }
         })
       }
@@ -62,6 +63,21 @@
     components: {
       vFooter,
       vHeader
+    },
+    mounted () {
+      let arr = []
+      $(this.list).each(function (k, v) {
+        if (v.Jihua_link) {
+          let Jihua_link = v.Jihua_link.split('&userNumberId=')[1]
+          if (Jihua_link){
+            arr.push({
+              D_title: v.D_title,
+              id: Jihua_link.split('&tab')[0]
+            })
+          }
+        }
+      })
+      console.warn(arr)
     }
   }
 </script>
@@ -73,6 +89,7 @@
     }
     .m20 {
         margin: 114px 0 100px 0;
+        background-color: #fff;
     }
     .bottom {
         margin-top: 13px;

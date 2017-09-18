@@ -1,6 +1,9 @@
 <template>
     <div id="app">
         <router-view></router-view>
+        <div style="position: inherit;top: 45%;left: 45%;z-index: -1;width: 10%">
+            <img src="/src/img/5-121204193Q9.gif" style="width: 100%">
+        </div>
     </div>
 </template>
 

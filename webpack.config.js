@@ -19,6 +19,12 @@ module.exports = {
         secure: false,
         changeOrigin: true,
         pathRewrite: {'^/api': ''},
+      },
+      '/alimama': {
+        target: 'http://pub.alimama.com',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: {'^/alimama': ''},
       }
     }
   },
