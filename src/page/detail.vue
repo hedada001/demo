@@ -12,7 +12,6 @@
 
 <script>
   import axios from 'axios'
-  import FormData from 'form-data'
   export default {
     beforeRouteEnter (to, from, next) {
       function getDetail () {
@@ -52,10 +51,6 @@
           },
           headers: {'Content-Type':'application/x-www-form-urlencoded'}
         })
-//        axios.post('api/handle_popularize', {
-//          act: add_quan,
-//          id: +this.id
-//        })
           .then(res => {
             console.warn(res)
           })
