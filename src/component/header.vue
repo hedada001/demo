@@ -1,6 +1,10 @@
 <template lang="html">
-    <div class="headerDiv">
+    <div class="headerDiv" v-if="url!=='detail'">
         <el-row>{{url}}</el-row>
+    </div>
+    <div class="headerDiv" v-else>
+        <i class="el-icon-arrow-left a_back"></i>
+        <el-row class="detail">详 情</el-row>
     </div>
 </template>
 
@@ -20,5 +24,10 @@
         text-align: center;
         font-size: 40px;
         z-index: 1;
+    }
+    .a_back{
+        position: absolute;
+        left: 10px;
+        line-height: 100px;
     }
 </style>

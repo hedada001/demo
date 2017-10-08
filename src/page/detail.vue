@@ -1,16 +1,24 @@
 <template lang="html">
     <div style="background-color: #fff">
+        <v-header :url="url"></v-header>
         <div>
-            <form method="post" name="info">
             <img :src="detail.Pic" class="image">
-            <a :href="'https://item.taobao.com/item.htm?id='+detail.GoodsID">淘宝链接</a>
-            <a :href="getUrl()">领券下单吧</a>
-            </form>
+        </div>
+        <div class="footerDiv">
+            <el-row>
+                <el-col :span="12" class="footerCol">
+                    <a :href="detail.Quan_link">领取优惠券</a>
+                </el-col>
+                <el-col :span="12" class="footerCol">
+                    <a :href="'https://item.taobao.com/item.htm?id='+detail.GoodsID">淘宝链接</a>
+                </el-col>
+            </el-row>
         </div>
     </div>
 </template>
 
 <script>
+  import vHeader from '../component/header.vue'
   import axios from 'axios'
   export default {
     beforeRouteEnter (to, from, next) {
@@ -34,31 +42,17 @@
           console.error(err);
         })
     },
+    components: {
+      vHeader
+    },
     data () {
       return {
         detail: this.$route.params.detail,
-        id: this.$route.params.id
+        id: this.$route.params.id,
+        url: 'detail'
       }
     },
     methods: {
-      getUrl () {
-        axios({
-          method: 'post',
-          url: 'api/handle_popularize',
-          params: {
-            act: 'add_quan',
-            id: +this.id
-          },
-          headers: {'Content-Type':'application/x-www-form-urlencoded'}
-        })
-          .then(res => {
-            console.warn(res)
-          })
-          .catch(err => {
-            console.log(err);
-          })
-//        return e
-      }
     }
   }
 </script>
@@ -66,5 +60,12 @@
 <style>
     .image{
         width: 100%;
+    }
+    .footerDiv{
+        width: 100%;position: fixed;bottom: 0;border-top: 1px solid #D3DCE6;background-color: #fff;font-size: 20px;
+    }
+    .footerCol{
+        text-align: center;
+        line-height: 100px;
     }
 </style>
