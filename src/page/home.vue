@@ -29,7 +29,7 @@
   import vFooter from '../component/footer.vue'
   import vHeader from '../component/header.vue'
   import axios from 'axios'
-  import $ from 'jquery'
+//  import $ from 'jquery'
   export default {
     beforeRouteEnter (to, from, next) {
       function getList () {
@@ -65,19 +65,19 @@
       vHeader
     },
     mounted () {
-      let arr = []
-      $(this.list).each(function (k, v) {
-        if (v.Jihua_link) {
-          let Jihua_link = v.Jihua_link.split('&userNumberId=')[1]
-          if (Jihua_link){
-            arr.push({
-              D_title: v.D_title,
-              id: Jihua_link.split('&tab')[0]
-            })
-          }
-        }
-      })
-      console.warn(arr)
+//      let arr = []
+//      $(this.list).each(function (k, v) {
+//        if (v.Jihua_link) {
+//          let Jihua_link = v.Jihua_link.split('&userNumberId=')[1]
+//          if (Jihua_link){
+//            arr.push({
+//              D_title: v.D_title,
+//              id: Jihua_link.split('&tab')[0]
+//            })
+//          }
+//        }
+//      })
+//      console.warn(arr)
     }
   }
 </script>
