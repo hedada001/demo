@@ -3,14 +3,19 @@
         <el-row>{{url}}</el-row>
     </div>
     <div class="headerDiv" v-else>
-        <i class="el-icon-arrow-left a_back"></i>
+        <i class="el-icon-arrow-left a_back" @click="go_back()"></i>
         <el-row class="detail">详 情</el-row>
     </div>
 </template>
 
 <script>
   export default{
-    props: ['url']
+    props: ['url'],
+    methods: {
+      go_back () {
+        alert()
+      }
+    }
   }
 </script>
 <style>
@@ -26,7 +31,7 @@
         z-index: 1;
     }
     .a_back{
-        position: absolute;
+        position: fixed;
         left: 10px;
         line-height: 100px;
     }

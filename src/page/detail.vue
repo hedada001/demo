@@ -1,7 +1,7 @@
 <template lang="html">
     <div style="background-color: #fff">
         <v-header :url="url"></v-header>
-        <div>
+        <div style="margin-top: 100px">
             <img :src="detail.Pic" class="image">
         </div>
         <div class="footerDiv">

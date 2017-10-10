@@ -12,9 +12,6 @@
                         <el-row>标题：{{item.Title}}</el-row>
                         <el-row>券后价：<span style="color: red">¥ </span> {{item.Price}}</el-row>
                         <el-row class="miaoshu">描述：{{item.Introduce}}</el-row>
-                        <div class="bottom clearfix">
-                            <time class="time">{{ currentDate }}</time>
-                        </div>
                     </div>
                 </el-card>
                 </router-link>
@@ -56,7 +53,6 @@
     data () {
       return {
         url: this.$route.params.url,
-        currentDate: new Date(),
         list: this.$route.params.List
       }
     },
