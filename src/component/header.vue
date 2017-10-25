@@ -3,8 +3,12 @@
         <el-row>{{url}}</el-row>
     </div>
     <div class="headerDiv" v-else>
-        <i class="el-icon-arrow-left a_back" @click="go_back()"></i>
-        <el-row class="detail">详 情</el-row>
+        <el-row>
+            <el-col :span="1" style="text-align: left;">
+                <i class="el-icon-arrow-left" @click="go_back()"></i>
+            </el-col>
+            <el-col :span="100">详 情</el-col>
+        </el-row>
     </div>
 </template>
 
@@ -13,7 +17,7 @@
     props: ['url'],
     methods: {
       go_back () {
-        alert()
+        window.history.go(-1)
       }
     }
   }
@@ -30,9 +34,7 @@
         font-size: 40px;
         z-index: 1;
     }
-    .a_back{
-        position: fixed;
-        left: 10px;
-        line-height: 100px;
+    .el-icon-arrow-left{
+        line-height: 100px
     }
 </style>

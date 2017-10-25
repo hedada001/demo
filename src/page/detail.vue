@@ -4,6 +4,10 @@
         <div style="margin-top: 100px">
             <img :src="detail.Pic" class="image">
         </div>
+        <div class="contentDiv">
+            <el-row>标题：{{detail.D_title}}</el-row>
+            <el-row>介绍：{{detail.Introduce}}</el-row>
+        </div>
         <div class="footerDiv">
             <el-row>
                 <el-col :span="12" class="footerCol">
@@ -67,5 +71,8 @@
     .footerCol{
         text-align: center;
         line-height: 100px;
+    }
+    .contentDiv{
+        font-size: 30px;margin: 30px
     }
 </style>
